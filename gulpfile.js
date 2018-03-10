@@ -5,12 +5,18 @@ var uglify = require("gulp-uglify");
 var rename = require("gulp-rename");
 var eslint = require("gulp-eslint");
 var browserSync = require("browser-sync").create();
+var sass = require("gulp-sass");
+var autoprefixer = require("gulp-autoprefixer");
+var cssnano = require("gulp-cssnano");
+var rename = require("gulp-rename");
+var prettyError = require("gulp-prettyerror");
+
 
 // TASKS
 
     // DEFAULT TASK
 
-gulp.task("default", ["browser-sync", "lint", "watch"]
+gulp.task("default", ["browser-sync", "lint", "watch", "sass", "scripts"]
 );
 
     // TASKS
@@ -27,7 +33,7 @@ gulp.task("lint", function() {
 
 gulp.task("scripts", ["lint"], function() {
   return gulp
-    .src("./*.js") // What files do we want gulp to consume?
+    .src("js/*.js") // What files do we want gulp to consume?
     .pipe(uglify()) // Call the uglify function on these files
     .pipe(rename({ extname: ".min.js" })) // Rename the uglified file
     .pipe(gulp.dest("./build/js")); // Where do we put the result?
@@ -35,9 +41,24 @@ gulp.task("scripts", ["lint"], function() {
 
 
 gulp.task('watch', function() {
-    gulp.watch(['*.js', '*.css', '*.html', '!gulpfile.js', '!reset.css', '!node_modules/'] , ['lint', 'reload']);
+    gulp.watch(['js/*.js', 'sass/*.scss', '*.html', '!gulpfile.js', '!reset.css', '!node_modules/'] , ['scripts', 'sass', 'lint', 'reload']);
 });
  
- gulp.task('reload', ['lint'], function() {
+ gulp.task('reload', ['scripts', 'sass', 'lint'], function() {
     browserSync.reload();
+});
+
+gulp.task("sass", function() {
+    return gulp
+        .src("./sass/style.scss")
+        .pipe(prettyError()) // ADD THIS LINE
+        .pipe(sass())
+        .pipe(
+          autoprefixer({
+            browsers: ["last 2 versions"]
+          })
+         )
+        .pipe(cssnano())
+        .pipe(rename("style.min.css"))
+        .pipe(gulp.dest("./build/css"));
 });

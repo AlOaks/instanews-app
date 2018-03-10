@@ -1,0 +1,133 @@
+/* VARIABLES */
+
+$bg-color: black;
+$gray-text: #c2c2c2;
+$base-font-size: 16px;
+$base-font-color: #FFF;
+$base-font: "Open Sans", sans-serif;
+$base-margin: 2rem;
+
+/* MEDIA QUERIES */
+
+$tablet-width: 600px;
+$desktop-width: 1000px;
+
+/* MIXINS */
+
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+      @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $tablet-width) {
+      @content;
+    }
+}
+
+/* STYLE FROM HERE */
+
+body {
+    background-color: $bg-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    @include tablet {
+
+    }
+    @include desktop {
+
+    }
+}
+
+.container {
+
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    @include desktop {
+        align-self: flex-start;
+    }
+}
+
+.news-logo {
+    padding-top: 45%;
+
+    @include tablet {
+        align-self: flex-start;
+    }
+
+    @include desktop {
+        padding-left: 40px;
+        padding-top: 35%;
+    }
+
+}
+
+/* SELECT SECTION */
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        align-self: flex-end;
+        margin: 8px;
+        margin-bottom: 80px;
+    }
+
+    @include desktop {
+        padding-left: 30px;
+    }
+
+    .choose-head {
+        color: $base-font-color;
+        text-align: center;  
+        font-size: $base-font-size;
+        font-family: $base-font;
+        margin-top: $base-margin;
+
+        @include tablet {
+
+        }
+    }
+
+    .select-box {
+        margin-top: $base-margin;
+        width: 100px;
+        align-self: center;
+
+        @include tablet {
+            align-self: flex-start;
+            margin-top: 15px;
+        }
+    }
+}
+
+/* FOOTER */
+
+.footer{
+    padding-top: 160px;
+
+    .copyright {
+        color: $gray-text;
+        font-family: $base-font;
+    }
+
+    @include tablet {
+        padding-top: 200px;
+        align-self: center;
+    }
+
+    @include desktop {
+        align-self: flex-start;
+        padding-left: 50px;
+        padding-bottom: 30px;
+    }
+}
