@@ -49,7 +49,6 @@ body {
 }
 
 .news-feed {
-    width: 100%;
     padding-top: 30px;
 
     @include tablet {
@@ -74,15 +73,26 @@ body {
     display: flex;
     flex-direction: column-reverse;
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 
+    &:hover {
+
+        h2{
+            color: $gray-text;
+            transition-duration: 2s;
+            visibility: visible;
+            height: 100px;
+        }
+    }
+
     @include tablet {
-        width: 32.99vw;
+        width: 32.8vw;
         height: 300px;
         }
 
     @include desktop {
-        width: 24.99vw;
+        width: 24.7vw;
         height: 400px;
     }
 }
@@ -90,16 +100,17 @@ body {
    h2 {
        font-size: 16px;
        color: white;
-       height: 100px;
+       height: 0px;
+       visibility: hidden;
+       transform: out;
+       transition-duration: 1s;
        text-align: left;
        text-indent: 10px;
        font-weight: bold;
        background-color: rgba(0, 0, 0, 0.3);
        font-family: "Open Sans", sans-serif;
 
-       &:hover{
-           color: $gray-text;
-       }
+       
    }
 
    a {
@@ -174,6 +185,21 @@ body {
             align-self: flex-start;
             margin-top: 15px;
         }
+    }
+}
+
+/* SELECTRIC */
+
+.selectric {
+
+    &:hover {
+    }
+
+    .label {
+        font-size: 16px;
+    }
+
+    .selectric-items {
     }
 }
 
