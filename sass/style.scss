@@ -45,8 +45,14 @@ body {
 
 .news-feed {
     padding-top: 30px;
+    margin-top: 70px;
+    background-size: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
 
     @include tablet {
+        margin-top: 0;
+        padding-top: 0;
         display: flex;
         flex-wrap: wrap;
     }
@@ -62,18 +68,42 @@ body {
     display: flex;
     flex-direction: row;
     align-self: center;
-}}
+    
+    }
+
+    @include desktop {
+        width: 100vw;
+        height: auto;
+    }
+}
+
+.logo-select-resize {
+    height: auto;
+    width: 100px;
+    align-self: flex-start;
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-self: center;}
+
+    @include desktop {
+    }
+}
 
 .article-link {
+    margin-top: 50px;
     
     @include tablet {
-        flex-basis: 33.33%;
+        flex-basis: 50%;
+        margin-top: 0;
     }
 
     @include desktop {
         flex-basis: 25%;
     }
 }
+
 
 
 .article {
@@ -87,10 +117,7 @@ body {
     &:hover {
 
         h2{
-            color: white;
-            transition-duration: 0.6s;
             visibility: visible;
-            height: 150px;
         }
     }
 }
@@ -99,7 +126,7 @@ body {
    h2 {
        font-size: 16px;
        color: white;
-       height: 100px;
+       height: auto;
        visibility: hidden;
        transition-duration: .1s;
        text-align: left;
@@ -126,7 +153,7 @@ body {
     }
 
     @include desktop {
-        
+
     }
 }
 
@@ -135,18 +162,40 @@ body {
 
     @include tablet {
         align-self: flex-start;
+        padding-top: 150px;
     }
 
     @include desktop {
         padding-left: 40px;
-        padding-top: 35%;
+        padding-top: 15%;
     }
 
 }
 
+.news-resize {
+    height: auto;
+    width: 150px;
+    transition: .5s;
+    margin-top: 20px;
+
+    @include tablet {
+        margin-top: 0;
+        height: auto;
+        width: 80px;
+        margin-left: 30px;
+    }
+}
+
 .load-gif {
-    height: 100px;
-    width: 100px;
+    height: 250px;
+    width: 250px;
+    margin-top: 50px;
+
+    @include tablet {
+        height: 100px;
+        width: 100px;
+        align-self: center;
+    }
 }
 
 /* SELECT SECTION */
@@ -184,6 +233,11 @@ body {
             margin-top: 15px;
         }
     }
+}
+
+.select-resize {
+    height: auto;
+    width: 80px;
 }
 
 /* SELECTRIC */

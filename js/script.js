@@ -1,16 +1,29 @@
 $(function(){
 
   $(".load-gif").hide();
-  
 
-  $(".select-box").change(function(){
+
+  $("#select").change(function(){
+
     
-    var selection = $(".select-box").val();
+    var selection = $("#select").val();
     console.log(selection);
+
+    if(selection == ("Sections...")){
+      
+      
+    };
 
     var url = "https://api.nytimes.com/svc/topstories/v2/"+selection+".json";
   url += '?' + $.param({'api-key': "58e7447484524db69db97ecdede76026"});
 
+    if(selection == ("Sections...")){
+      $(".news-feed").empty();
+      $(".news-resize").addClass("news-logo");
+      $(".news-resize").removeClass("news-resize");
+      $(".select-resize").addClass("select-box");
+      $(".select-box").removeClass("select-resize");
+    } else 
     $(".load-gif").show();
     
     $.ajax({
@@ -19,6 +32,10 @@ $(function(){
       dataType: "json"
     }).done(function(result) {
       console.log(result);
+      $(".news-logo").addClass("news-resize");
+      $(".news-resize").removeClass("news-logo");
+      $(".select-box").addClass("select-resize");
+      $(".select-resize").removeClass("select-box");
       $(".load-gif").hide();
       $(".news-feed").empty();
       for (var i=0; i<12; ++i){
@@ -34,16 +51,9 @@ $(function(){
       throw err;
     });  
   })
+  
 
   $(".select-box").selectric();
-
-  // $(".news-text").hide();
-
-  // $(".article-link").hover(function(){
-  //     $(".news-text").show(2000);
-  // }, function() {
-  //     $(".news-text").hide(1500);
-  // })
 
 
 });
