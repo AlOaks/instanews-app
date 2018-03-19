@@ -1,0 +1,59 @@
+/* LOGO SELECT */
+
+.logo-select {
+
+    @include tablet {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    
+    }
+
+    @include desktop {
+        width: 100vw;
+        height: auto;
+    }
+}
+
+.logo-select-resize {
+    height: auto;
+    width: 100px;
+    align-self: flex-start;
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-self: center;}
+
+    @include desktop {
+    }
+}
+
+.news-logo {
+    padding-top: 100px;
+
+    @include tablet {
+        align-self: flex-start;
+        padding-top: 150px;
+    }
+
+    @include desktop {
+        padding-left: 40px;
+        padding-top: 15%;
+    }
+
+}
+
+.news-resize {
+    height: auto;
+    width: 150px;
+    transition: .5s;
+    margin-top: 20px;
+
+    @include tablet {
+        margin-top: 0;
+        height: auto;
+        width: 80px;
+        margin-left: 30px;
+    }
+}

@@ -1,0 +1,71 @@
+/* NEWS FEED */
+
+
+.news-feed {
+    padding-top: 30px;
+    margin-top: 70px;
+    background-size: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include tablet {
+        margin-top: 0;
+        padding-top: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    @include desktop {
+        
+    }
+}
+
+.article-link {
+    margin-top: 50px;
+    
+    @include tablet {
+        flex-basis: 50%;
+        margin-top: 0;
+    }
+
+    @include desktop {
+        flex-basis: 25%;
+    }
+}
+
+
+
+.article {
+    height: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+
+        h2{
+            visibility: visible;
+        }
+    }
+}
+ 
+
+   h2 {
+       font-size: 16px;
+       color: white;
+       height: auto;
+       visibility: hidden;
+       transition-duration: .1s;
+       text-align: left;
+       text-indent: 10px;
+       font-weight: bold;
+       background-color: rgba(0, 0, 0, 0.5);
+       font-family: "Open Sans", sans-serif;
+
+   }
+
+   a {
+       text-decoration: none;
+   }

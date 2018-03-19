@@ -1,0 +1,41 @@
+/* SELECT SECTION */
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        align-self: flex-end;
+        margin: 8px;
+        margin-bottom: 80px;
+    }
+
+    @include desktop {
+        padding-left: 30px;
+    }
+
+    .choose-head {
+        color: $base-font-color;
+        text-align: center;  
+        font-size: $base-font-size;
+        font-family: $base-font;
+        margin-top: $base-margin;
+
+    }
+
+    .select-box {
+        margin-top: $base-margin;
+        width: 100px;
+        align-self: center;
+
+        @include tablet {
+            align-self: flex-start;
+            margin-top: 15px;
+        }
+    }
+}
+
+.select-resize {
+    height: auto;
+    width: 80px;
+}

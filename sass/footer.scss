@@ -1,0 +1,21 @@
+/* FOOTER */
+
+.footer{
+    padding-top: 100px;
+
+    .copyright {
+        color: $gray-text;
+        font-family: $base-font;
+    }
+
+    @include tablet {
+        padding-top: 150px;
+        align-self: center;
+    }
+
+    @include desktop {
+        align-self: flex-start;
+        padding-left: 50px;
+        padding-bottom: 30px;
+    }
+}
