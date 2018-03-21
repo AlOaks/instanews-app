@@ -24,7 +24,7 @@ body {
 
     }
     @include desktop {
-
+       
     }
 }
 
@@ -33,6 +33,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     flex-direction: column;
+    
 
     @include tablet {
         flex-direction: row;
