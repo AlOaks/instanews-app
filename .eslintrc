@@ -14,6 +14,7 @@
     },
     "globals": {
         "jQuery": false,
+        "parser": "babel-eslint",
         "$": false
     },
     "env": {

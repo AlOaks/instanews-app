@@ -1,21 +1,19 @@
-$(function(){
+$(() =>{
 
   $(".load-gif").hide();
 
+  $("#select").change( () =>{
 
-  $("#select").change(function(){
-
-    
-    var selection = $("#select").val();
+    let selection = $("#select").val();
     console.log(selection);
 
-    if(selection == ("Sections...")){
-      
-      
+    if(selection == ("Sections...")){ 
     };
+    let url = `https://api.nytimes.com/svc/topstories/v2/${selection}.json`;
 
-    var url = "https://api.nytimes.com/svc/topstories/v2/"+selection+".json";
-  url += '?' + $.param({'api-key': "58e7447484524db69db97ecdede76026"});
+    let key = $.param({'api-key': "58e7447484524db69db97ecdede76026"});
+
+  url += `?${key}` ;
 
     if(selection == ("Sections...")){
       $(".news-feed").empty();
@@ -25,12 +23,11 @@ $(function(){
       $(".select-box").removeClass("select-resize");
     } else 
     $(".load-gif").show();
-    
     $.ajax({
       url: url,
       method: 'GET',
       dataType: "json"
-    }).done(function(result) {
+    }).done( (result) => {
       console.log(result);
       $(".news-logo").addClass("news-resize");
       $(".news-resize").removeClass("news-logo");
@@ -38,22 +35,18 @@ $(function(){
       $(".select-resize").removeClass("select-box");
       $(".load-gif").hide();
       $(".news-feed").empty();
-      for (var i=0; i<12; ++i){
+      for (let i=0; i<12; ++i){
         if(result.results[i].multimedia[4]){
-          $(".news-feed").append("<a href='"+result.results[i].url+"' class='article-link'><div class='article' style='background-image: url("+result.results[i].multimedia[4].url+")'><h2 class='news-text'>"+result.results[i].abstract+"</h2></div></a>");
+          $(".news-feed").append(`<a href='${result.results[i].url}' class='article-link'><div class='article' style='background-image: url("${result.results[i].multimedia[4].url}")'><h2 class='news-text'>${result.results[i].abstract}</h2></div></a>`);
         } else {
           console.log(result.results);
           result.results.splice(i,1);
           --i;
         }
     }
-    }).fail(function(err) {
+    }).fail((err) => {
       throw err;
     });  
   })
-  
-
   $(".select-box").selectric();
-
-
 });

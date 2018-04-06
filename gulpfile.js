@@ -8,9 +8,8 @@ var browserSync = require("browser-sync").create();
 var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
-var rename = require("gulp-rename");
 var prettyError = require("gulp-prettyerror");
-
+var babel = require("gulp-babel");
 
 // TASKS
 
@@ -20,6 +19,7 @@ gulp.task("default", ["browser-sync", "lint", "watch", "sass", "scripts"]
 );
 
     // TASKS
+
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -34,6 +34,7 @@ gulp.task("lint", function() {
 gulp.task("scripts", ["lint"], function() {
   return gulp
     .src("js/*.js") // What files do we want gulp to consume?
+    .pipe(babel())
     .pipe(uglify()) // Call the uglify function on these files
     .pipe(rename({ extname: ".min.js" })) // Rename the uglified file
     .pipe(gulp.dest("./build/js")); // Where do we put the result?
