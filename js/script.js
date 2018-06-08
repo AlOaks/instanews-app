@@ -1,3 +1,7 @@
+import "../sass/style.scss";
+import $ from 'jquery';
+import selectric from 'selectric';
+
 $(() =>{
 
   $(".load-gif").hide();
